@@ -13,9 +13,9 @@
         <div><strong>Text:</strong> {{ad.text}}</div>
         <div><strong>Status:</strong> {{ad.status}}</div>
         <button ng-if="ad.status == 'WaitingApproval' || ad.status == 'Published'" ng-click="deactivateAd(ad.id)">Deactivate</button>
-        <button ng-if="ad.status == 'Inactive'"><a href="user/edit/{{ad.id}}">Edit</a></button>
+        <button ng-if="ad.status == 'Inactive'"><a href="#/user/edit/{{ad.id}}">Edit</a></button>
         <button ng-if="ad.status == 'Inactive'" ng-click="publishAgainAd(ad.id)">Publish Again</button>
-        <button ng-if="ad.status == 'Inactive'"><a href="user/delete/{{ad.id}}">Delete</a></button>
+        <button ng-if="ad.status == 'Inactive'"><a href="#/user/delete/{{ad.id}}">Delete</a></button>
     </li>
 </ul>
 
