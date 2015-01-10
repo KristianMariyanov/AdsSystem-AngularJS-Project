@@ -21,9 +21,30 @@
     <ul class="sidebar-menu">
         <li><a href="#/">Home</a></li>
         <li><a href="#/user/ads">My Ads</a></li>
-        <li><a href="#/user/ads/publish">Publish New Ad</a></li>
+        <li><a href="#/publish">Publish New Ad</a></li>
         <li><a href="#/user/profile">Edit Profile</a></li>
         <li><a ng-click="logout()">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Navigation box for logged in admins and normal users in /users/ads -->
+<div ng-if="authService.isUserInUserAds()" class="box">
+    <h2 ng-click="alert('as')" ng-if="authService.isNormalUser()">My Ads</h2>
+    <h2 ng-if="authService.isAdmin()">My Ads</h2>
+    <ul class="sidebar-menu">
+        <li class="special"><a href="#/user/ads/all">All</a></li>
+        <li ng-class="{'selected' : selectedTownId == 1}">
+            <a href="#/user/ads/2">Published</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 1}">
+            <a href="#/user/ads/1">WaitingApproval</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 0}">
+            <a href="#/user/ads/0">Inactive</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 3}">
+            <a href="#/user/ads/3">Rejected</a>
+        </li>
     </ul>
 </div>
 
