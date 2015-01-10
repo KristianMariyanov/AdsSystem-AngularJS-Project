@@ -57,6 +57,16 @@ app.factory('userService',
                     headers: authService.getAuthHeaders()
                 };
                 $http(request).success(success).error(error);
+            },
+
+            editAd : function (adData, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/user/ads/'+ adData.id,
+                    headers: authService.getAuthHeaders(),
+                    data: adData
+                };
+                $http(request).success(success).error(error);
             }
 
         }
