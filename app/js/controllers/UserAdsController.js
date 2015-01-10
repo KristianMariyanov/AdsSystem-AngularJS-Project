@@ -24,31 +24,5 @@ app.controller('UserAdsController',
         };
 
         $scope.reloadUserAds();
-
-        $scope.deactivateAd = function(adId) {
-            userService.deactivateAd(
-                adId,
-                function success(data) {
-                    notifyService.showInfo('Successfully deactivated ad');
-                    $scope.reloadAds();
-                },
-                function error(err) {
-                    notifyService.showError("There is a error", err);
-                }
-            );
-        };
-
-        $scope.publishAgainAd = function(adId) {
-            userService.publishAgainAd(
-                adId,
-                function success(data) {
-                    notifyService.showInfo('Successfully Publish ad');
-                    $scope.reloadAds();
-                },
-                function error(err) {
-                    notifyService.showError("There is a error", err);
-                }
-            );
-        };
    }
 );
