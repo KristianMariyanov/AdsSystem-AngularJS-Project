@@ -1,11 +1,15 @@
 'use strict';
 
 app.controller('UserAdsController',
-   function ($scope, userService, notifyService, pageSize) {
-      $scope.adsParams = {
-          'startPage' : 1,
-          'pageSize' : pageSize
-      };
+   function ($scope, userService, $routeParams, notifyService, pageSize) {
+        $scope.adsParams = {
+            'startPage' : 1,
+            'pageSize' : pageSize,
+            'Status': $routeParams.id
+        };
+       if ($routeParams.id == 'all') {
+           $scope.adsParams.Status = null;
+       }
 
       $scope.reloadUserAds = function() {
           userService.getUserAds(
@@ -20,13 +24,31 @@ app.controller('UserAdsController',
       };
 
       $scope.reloadUserAds();
-	  
-	  // This event is sent by RightSideBarController when the current category is changed
-        $scope.$on("statusSelectionChanged", function(event, selectStatusId) {
-            $scope.adsParams.categoryId = selectStatusId;
-            $scope.adsParams.startPage = 1;
-            $scope.reloadUserAds();
-        });
 
+       $scope.deactivateAd = function(adId) {
+           userService.deactivateAd(
+               adId,
+               function success(data) {
+                   notifyService.showInfo('Successfully deactivated ad');
+                   $scope.reloadAds();
+               },
+               function error(err) {
+                   notifyService.showError("There is a error", err);
+               }
+           );
+       };
+
+       $scope.publishAgainAd = function(adId) {
+           userService.publishAgainAd(
+               adId,
+               function success(data) {
+                   notifyService.showInfo('Successfully Publish ad');
+                   $scope.reloadAds();
+               },
+               function error(err) {
+                   notifyService.showError("There is a error", err);
+               }
+           );
+       };
    }
 );
