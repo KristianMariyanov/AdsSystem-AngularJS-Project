@@ -12,6 +12,10 @@
         </div>
         <div><strong>Text:</strong> {{ad.text}}</div>
         <div><strong>Status:</strong> {{ad.status}}</div>
+        <button ng-if="ad.status == 'WaitingApproval' || ad.status == 'Published'" ng-click="deactivateAd(ad.id)">Deactivate</button>
+        <button ng-if="ad.status == 'Inactive'" ng-click="deactivateAd(ad.id)">Edit</button>
+        <button ng-if="ad.status == 'Inactive'" ng-click="publishAgainAd(ad.id)">Publish Again</button>
+        <button ng-if="ad.status == 'Inactive'" ng-click="deactivateAd(ad.id)">Delete</button>
     </li>
 </ul>
 
