@@ -1,0 +1,45 @@
+<div ng-if="userData">
+    <form>
+        <h4>Edit Profile</h4>
+        <hr/>
+
+        <label for="name" class="padding05">Name:</label>
+        <input type="text" id="name" class="padding05" ng-model="userData.name" required>
+
+        <label for="email" class="padding05">Email:</label>
+        <input type="email" id="email" class="padding05" ng-model="userData.email" required>
+
+        <label for="phone" class="padding05">Phone:</label>
+        <input type="text" id="phone" class="padding05" ng-model="userData.phoneNumber">
+
+        <label for="town" class="padding05">Town:</label>
+        <select class="padding05" ng-model="userData.townId"
+                ng-options="town.id as town.name for town in towns">
+            <option value="">-- choose town --</option>
+        </select>
+
+        <div class="center">
+            <button class="button" ng-click="editProfile(userData)">Update</button>
+            <button class="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </form>
+
+    <form class="padding">
+        <h4>Change Password</h4>
+        <hr/>
+        <label for="oldPassword" class="padding05">Old password:</label>
+        <input type="password" id="oldPassword" class="padding05" ng-model="password.oldPassword" required>
+
+        <label for="password" class="padding05">Password:</label>
+        <input type="password" id="password" class="padding05" ng-model="password.newPassword" required>
+
+        <label for="confirm-password" class="padding05">Confirm password:</label>
+        <input type="password" id="confirm-password" class="padding05" ng-model="password.confirmPassword" required>
+
+        <div class="center">
+            <button class="button button-large" ng-click="changePassword(password)">Change Password</button>
+            <button class="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

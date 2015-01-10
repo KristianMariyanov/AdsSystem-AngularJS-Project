@@ -30,7 +30,8 @@ app.controller('UserAdsController',
                 adId,
                 function success(data) {
                     notifyService.showInfo('Successfully deactivated ad');
-                    $scope.reloadAds();
+                    $scope.reloadUserAds();
+                    //$route.reload();
                 },
                 function error(err) {
                     notifyService.showError("There is a error", err);
@@ -43,7 +44,8 @@ app.controller('UserAdsController',
                 adId,
                 function success(data) {
                     notifyService.showInfo('Successfully Publish ad');
-                    $scope.reloadAds();
+                    $scope.reloadUserAds();
+                    //$route.reload();
                 },
                 function error(err) {
                     notifyService.showError("There is a error", err);
