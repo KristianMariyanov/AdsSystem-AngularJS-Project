@@ -10,11 +10,11 @@ app.controller('UserPublishNewAdController',
       $scope.publishAd = function(adData) {
           userService.createNewAd(adData,
               function success() {
-                  // TODO: show �success� info message
+                  notifyService.showError('Advertisement submitted for approval. Once approved, it will be published');
                   $location.path("/user/ads");
               },
               function error(err) {
-                  console.log(err);
+                 notifyService.showError('There is a problem with publishing ad', err);
               }
           );
       };
