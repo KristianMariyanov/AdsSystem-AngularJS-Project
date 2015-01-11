@@ -61,7 +61,9 @@ app.factory('authService',
                 var path = $location.path();
                 var wantedPath = "/user/ads";
                 var isInUserAds = path.indexOf(wantedPath) !== -1;
-                return (currentUser != undefined) && isInUserAds;
+                var wantedAdminPath = '/admin/home';
+                var isInAdminAds = path.indexOf(wantedAdminPath) !== -1;
+                return ((currentUser != undefined) && isInUserAds) || isInAdminAds;
             },
 
             getAuthHeaders : function() {
