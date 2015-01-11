@@ -52,6 +52,18 @@ app.config(function ($routeProvider) {
         controller: 'EditProfileController'
     });
 
+    // admin routes
+
+    $routeProvider.when('/admin/home', {
+        templateUrl: 'templates/admin/admin-ads.html',
+        controller: 'AdminAdsController'
+    });
+
+    $routeProvider.when('/admin/home/:id', {
+        templateUrl: 'templates/admin/admin-ads.html',
+        controller: 'AdminAdsController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
@@ -62,6 +74,10 @@ app.run(function ($rootScope, $location, authService) {
         if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
             // Authorization check: anonymous site visitors cannot access user routes
             $location.path("/");
+        }
+
+        if ($location.path() == '/' && authService.isAdmin()) {
+            $location.path("/admin/home");
         }
     });
 });
