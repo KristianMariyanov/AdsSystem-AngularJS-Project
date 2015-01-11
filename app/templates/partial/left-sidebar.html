@@ -27,10 +27,8 @@
     </ul>
 </div>
 
-<!-- Navigation box for logged in admins and normal users in /users/ads -->
-<div ng-if="authService.isUserInUserAds()" class="box">
-    <h2 ng-click="alert('as')" ng-if="authService.isNormalUser()">My Ads</h2>
-    <h2 ng-if="authService.isAdmin()">My Ads</h2>
+<div ng-if="authService.isUserInUserAds() && authService.isNormalUser()" class="box">
+    <h2>My Ads</h2>
     <ul class="sidebar-menu">
         <li class="special"><a href="#/user/ads/all">All</a></li>
         <li ng-class="{'selected' : selectedTownId == 1}">
@@ -57,5 +55,25 @@
         <li><a href="#/admin/categories">Categories</a></li>
         <li><a href="#/admin/towns">Towns</a></li>
         <li><a ng-click="logout()">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Navigation box for logged in admins and normal users in /users/ads -->
+<div ng-if="authService.isUserInUserAds()" class="box">
+    <h2 ng-if="authService.isAdmin()">Admin Ads</h2>
+    <ul class="sidebar-menu">
+        <li class="special"><a href="#/admin/home/all">All</a></li>
+        <li ng-class="{'selected' : selectedTownId == 1}">
+            <a href="#/admin/home/2">Published</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 1}">
+            <a href="#/admin/home/1">WaitingApproval</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 0}">
+            <a href="#/admin/home/0">Inactive</a>
+        </li>
+        <li ng-class="{'selected' : selectedTownId == 3}">
+            <a href="#/admin/home/3">Rejected</a>
+        </li>
     </ul>
 </div>
